@@ -1,0 +1,37 @@
+<h1>Listing Messages</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ElugceChatWeb.MessageLive.FormComponent,
+    id: @message.id || :new,
+    title: @page_title,
+    action: @live_action,
+    message: @message,
+    return_to: Routes.message_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Author</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="messages">
+    <%= for message <- @messages do %>
+      <tr id="message-<%= message.id %>">
+        <td><%= message.text %></td>
+        <td><%= message.author %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.message_show_path(@socket, :show, message) %></span>
+          <span><%= live_patch "Edit", to: Routes.message_index_path(@socket, :edit, message) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: message.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Message", to: Routes.message_index_path(@socket, :new) %></span>
