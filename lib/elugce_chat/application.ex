@@ -6,23 +6,22 @@ defmodule ElugceChat.Application do
   use Application
 
   def start(_type, _args) do
-    children = [
-      # Start the Ecto repository
-      ElugceChat.Repo,
-      # Start the Telemetry supervisor
-      ElugceChatWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: ElugceChat.PubSub},
-      # Start the Endpoint (http/https)
-      ElugceChatWeb.Endpoint
-      # Start a worker by calling: ElugceChat.Worker.start_link(arg)
-      # {ElugceChat.Worker, arg}
-    ]
-
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: ElugceChat.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children(), opts())
+  end
+
+  def children() do
+    [
+      ElugceChat.Repo,
+      ElugceChatWeb.Telemetry,
+      {Phoenix.PubSub, name: ElugceChat.PubSub},
+      ElugceChatWeb.Endpoint
+    ]
+  end
+
+  def opts() do
+    [strategy: :one_for_one, name: ElugceChat.Supervisor]
   end
 
   # Tell Phoenix to update the endpoint configuration
