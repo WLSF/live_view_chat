@@ -1,6 +1,7 @@
 defmodule ElugceChatWeb.MessageLive.Index do
   use ElugceChatWeb, :live_view
 
+  alias ElugceChat.State
   alias ElugceChat.Chat
   alias ElugceChat.Chat.Message
 
@@ -30,6 +31,12 @@ defmodule ElugceChatWeb.MessageLive.Index do
     socket
     |> assign(:page_title, "Listing Messages")
     |> assign(:message, nil)
+  end
+
+  @impl true
+  def handle_event("create", %{"nil" => %{"text" => message} = obj}, socket) do
+    State.push(obj)
+    {:noreply, assign(socket, :messages, message)}
   end
 
   @impl true

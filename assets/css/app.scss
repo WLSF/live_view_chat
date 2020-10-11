@@ -1,6 +1,8 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
 @import "../node_modules/nprogress/nprogress.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "./chat.scss";
 
 /* LiveView specific classes for your customizations */
 .invalid-feedback {

@@ -2,6 +2,7 @@ defmodule ElugceChatWeb.MessageLive.FormComponent do
   use ElugceChatWeb, :live_component
 
   alias ElugceChat.Chat
+  alias ElugceChat.State
 
   @impl true
   def update(%{message: message} = assigns, socket) do
@@ -30,6 +31,8 @@ defmodule ElugceChatWeb.MessageLive.FormComponent do
   defp save_message(socket, :edit, message_params) do
     case Chat.update_message(socket.assigns.message, message_params) do
       {:ok, _message} ->
+        State.push(:rand.uniform(200))
+        IO.inspect State.list() #Gotta change it here
         {:noreply,
          socket
          |> put_flash(:info, "Message updated successfully")
@@ -43,9 +46,10 @@ defmodule ElugceChatWeb.MessageLive.FormComponent do
   defp save_message(socket, :new, message_params) do
     case Chat.create_message(message_params) do
       {:ok, _message} ->
+        State.push(:rand.uniform(200))
         {:noreply,
          socket
-         |> put_flash(:info, "Message created successfully")
+         |> put_flash(:info, "Message created successfully #{State.list()}")
          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

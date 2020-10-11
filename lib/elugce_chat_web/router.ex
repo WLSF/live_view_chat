@@ -5,9 +5,12 @@ defmodule ElugceChatWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {ElugceChatWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :with_root_layout do
+    plug :put_root_layout, {ElugceChatWeb.LayoutView, :root}
   end
 
   pipeline :api do
@@ -15,9 +18,13 @@ defmodule ElugceChatWeb.Router do
   end
 
   scope "/", ElugceChatWeb do
-    pipe_through :browser
+    pipe_through [:browser, :with_root_layout]
 
     live "/", PageLive, :index
+  end
+
+  scope "/", ElugceChatWeb do
+    pipe_through :browser
 
     live "/messages", MessageLive.Index, :index
     live "/messages/new", MessageLive.Index, :new

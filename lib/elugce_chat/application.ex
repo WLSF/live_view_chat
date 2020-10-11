@@ -13,6 +13,7 @@ defmodule ElugceChat.Application do
 
   def children() do
     [
+      {ElugceChat.State, []},
       ElugceChat.Repo,
       ElugceChatWeb.Telemetry,
       {Phoenix.PubSub, name: ElugceChat.PubSub},
