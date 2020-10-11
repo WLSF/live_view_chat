@@ -7,7 +7,7 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :live_view_chat, LiveViewChat.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "12345",
   database: "live_view_chat_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
