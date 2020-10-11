@@ -17,9 +17,7 @@ defmodule LiveViewChat.Chat do
       [%Message{}, ...]
 
   """
-  def list_messages do
-    Repo.all(Message)
-  end
+  def list_messages, do: Repo.all(Message)
 
   @doc """
   Gets a single message.
@@ -53,6 +51,7 @@ defmodule LiveViewChat.Chat do
     %Message{}
     |> Message.changeset(attrs)
     |> Repo.insert()
+    |> broadcast(:message_created)
   end
 
   @doc """
@@ -100,5 +99,15 @@ defmodule LiveViewChat.Chat do
   """
   def change_message(%Message{} = message, attrs \\ %{}) do
     Message.changeset(message, attrs)
+  end
+
+  def subscribe() do
+    Phoenix.PubSub.subscribe(LiveViewChat.PubSub, "messages")
+  end
+
+  defp broadcast({:error, _reason} = error, _event), do: error
+  defp broadcast({:ok, message}, event) do
+    Phoenix.PubSub.broadcast(LiveViewChat.PubSub, "messages", {event, message})
+    {:ok, message}
   end
 end
