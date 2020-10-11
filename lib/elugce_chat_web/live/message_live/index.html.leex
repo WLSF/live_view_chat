@@ -23,7 +23,7 @@
         return_to: Routes.message_index_path(@socket, :index) %>
     <% end %>
 
-    <div class="container py-5 px-4">
+    <div class="container py-5 px-4 border border-success">
       <!-- Chat Box-->
       <div class="px-4 py-5 chat-box bg-white">
         <%= for message <- @messages do %>

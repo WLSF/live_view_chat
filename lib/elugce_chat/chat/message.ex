@@ -3,7 +3,7 @@ defmodule ElugceChat.Chat.Message do
   import Ecto.Changeset
 
   schema "messages" do
-    field :author, :string
+    field :author, :string, default: "WLSF"
     field :text, :string
 
     timestamps()

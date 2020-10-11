@@ -34,9 +34,11 @@ defmodule ElugceChatWeb.MessageLive.Index do
   end
 
   @impl true
-  def handle_event("create", %{"nil" => %{"text" => message} = obj}, socket) do
-    State.push(obj)
-    {:noreply, assign(socket, :messages, message)}
+  def handle_event("create", %{"nil" => %{"text" => _} = message}, socket) do
+    with {:ok, %Message{}} <- Chat.create_message(message) do
+      IO.inspect(list_messages())
+      {:noreply, assign(socket, :messages, list_messages())}
+    end
   end
 
   @impl true
