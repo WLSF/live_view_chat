@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(ElugceChat.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(LiveViewChat.Repo, :manual)

@@ -1,4 +1,4 @@
-defmodule ElugceChat.Repo.Migrations.CreateMessages do
+defmodule LiveViewChat.Repo.Migrations.CreateMessages do
   use Ecto.Migration
 
   def change do
