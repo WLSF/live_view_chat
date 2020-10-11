@@ -1,4 +1,4 @@
-# ElugceChat
+# LiveViewChat
 
 To start your Phoenix server:
 

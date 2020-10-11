@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :elugce_chat, ElugceChat.Repo,
+config :live_view_chat, LiveViewChat.Repo,
   username: "postgres",
   password: "postgres",
-  database: "elugce_chat_dev",
+  database: "live_view_chat_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :elugce_chat, ElugceChat.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :elugce_chat, ElugceChatWeb.Endpoint,
+config :live_view_chat, LiveViewChatWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :elugce_chat, ElugceChatWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :elugce_chat, ElugceChatWeb.Endpoint,
+config :live_view_chat, LiveViewChatWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/elugce_chat_web/(live|views)/.*(ex)$",
-      ~r"lib/elugce_chat_web/templates/.*(eex)$"
+      ~r"lib/live_view_chat_web/(live|views)/.*(ex)$",
+      ~r"lib/live_view_chat_web/templates/.*(eex)$"
     ]
   ]
 

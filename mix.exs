@@ -1,9 +1,9 @@
-defmodule ElugceChat.MixProject do
+defmodule LiveViewChat.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :elugce_chat,
+      app: :live_view_chat,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule ElugceChat.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {ElugceChat.Application, []},
+      mod: {LiveViewChat.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :elugce_chat,
-  ecto_repos: [ElugceChat.Repo]
+config :live_view_chat,
+  ecto_repos: [LiveViewChat.Repo]
 
 # Configures the endpoint
-config :elugce_chat, ElugceChatWeb.Endpoint,
+config :live_view_chat, LiveViewChatWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "e9iz+rQ+lrxcgab4ssRigMqnq157D0FyQ5lSqrmWzwmMscE9tgtLNPokCdOI8K3v",
-  render_errors: [view: ElugceChatWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: ElugceChat.PubSub,
+  render_errors: [view: LiveViewChatWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: LiveViewChat.PubSub,
   live_view: [signing_salt: "by4KpLq3"]
 
 # Configures Elixir's Logger
