@@ -6,6 +6,8 @@ defmodule LiveViewChatWeb.MessageLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Chat.subscribe()
+
     {:ok, assign(socket, :messages, list_messages())}
   end
 
@@ -45,6 +47,11 @@ defmodule LiveViewChatWeb.MessageLive.Index do
     {:ok, _} = Chat.delete_message(message)
 
     {:noreply, assign(socket, :messages, list_messages())}
+  end
+
+  @impl true
+  def handle_info({:message_created, message}, socket) do
+    {:noreply, update(socket, :messages, fn messages -> messages ++ [message] end)}
   end
 
   defp list_messages do
