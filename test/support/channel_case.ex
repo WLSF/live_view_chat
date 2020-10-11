@@ -1,4 +1,4 @@
-defmodule ElugceChatWeb.ChannelCase do
+defmodule LiveViewChatWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule ElugceChatWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use ElugceChatWeb.ChannelCase, async: true`, although
+  by setting `use LiveViewChatWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule ElugceChatWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import ElugceChatWeb.ChannelCase
+      import LiveViewChatWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint ElugceChatWeb.Endpoint
+      @endpoint LiveViewChatWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ElugceChat.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LiveViewChat.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ElugceChat.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(LiveViewChat.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,5 +1,5 @@
-defmodule ElugceChatWeb.PageLiveTest do
-  use ElugceChatWeb.ConnCase
+defmodule LiveViewChatWeb.PageLiveTest do
+  use LiveViewChatWeb.ConnCase
 
   import Phoenix.LiveViewTest
 

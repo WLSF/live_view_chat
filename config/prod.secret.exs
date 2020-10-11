@@ -11,7 +11,7 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
-config :elugce_chat, ElugceChat.Repo,
+config :live_view_chat, LiveViewChat.Repo,
   # ssl: true,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
@@ -23,7 +23,7 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :elugce_chat, ElugceChatWeb.Endpoint,
+config :live_view_chat, LiveViewChatWeb.Endpoint,
   http: [
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]
@@ -35,7 +35,7 @@ config :elugce_chat, ElugceChatWeb.Endpoint,
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start each relevant endpoint:
 #
-#     config :elugce_chat, ElugceChatWeb.Endpoint, server: true
+#     config :live_view_chat, LiveViewChatWeb.Endpoint, server: true
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.

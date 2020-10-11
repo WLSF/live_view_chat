@@ -5,16 +5,16 @@ use Mix.Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :elugce_chat, ElugceChat.Repo,
+config :live_view_chat, LiveViewChat.Repo,
   username: "postgres",
   password: "postgres",
-  database: "elugce_chat_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "live_view_chat_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :elugce_chat, ElugceChatWeb.Endpoint,
+config :live_view_chat, LiveViewChatWeb.Endpoint,
   http: [port: 4002],
   server: false
 

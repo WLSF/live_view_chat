@@ -1,4 +1,4 @@
-defmodule ElugceChat.DataCase do
+defmodule LiveViewChat.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule ElugceChat.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use ElugceChat.DataCase, async: true`, although
+  by setting `use LiveViewChat.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule ElugceChat.DataCase do
 
   using do
     quote do
-      alias ElugceChat.Repo
+      alias LiveViewChat.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import ElugceChat.DataCase
+      import LiveViewChat.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ElugceChat.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LiveViewChat.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ElugceChat.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(LiveViewChat.Repo, {:shared, self()})
     end
 
     :ok

@@ -1,10 +1,10 @@
-defmodule ElugceChat.ChatTest do
-  use ElugceChat.DataCase
+defmodule LiveViewChat.ChatTest do
+  use LiveViewChat.DataCase
 
-  alias ElugceChat.Chat
+  alias LiveViewChat.Chat
 
   describe "messages" do
-    alias ElugceChat.Chat.Message
+    alias LiveViewChat.Chat.Message
 
     @valid_attrs %{author: "some author", text: "some text"}
     @update_attrs %{author: "some updated author", text: "some updated text"}

@@ -1,9 +1,9 @@
-defmodule ElugceChatWeb.MessageLiveTest do
-  use ElugceChatWeb.ConnCase
+defmodule LiveViewChatWeb.MessageLiveTest do
+  use LiveViewChatWeb.ConnCase
 
   import Phoenix.LiveViewTest
 
-  alias ElugceChat.Chat
+  alias LiveViewChat.Chat
 
   @create_attrs %{author: "some author", text: "some text"}
   @update_attrs %{author: "some updated author", text: "some updated text"}
