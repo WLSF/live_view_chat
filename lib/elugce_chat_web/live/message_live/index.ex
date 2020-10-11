@@ -1,7 +1,6 @@
 defmodule ElugceChatWeb.MessageLive.Index do
   use ElugceChatWeb, :live_view
 
-  alias ElugceChat.State
   alias ElugceChat.Chat
   alias ElugceChat.Chat.Message
 
@@ -36,7 +35,6 @@ defmodule ElugceChatWeb.MessageLive.Index do
   @impl true
   def handle_event("create", %{"nil" => %{"text" => _} = message}, socket) do
     with {:ok, %Message{}} <- Chat.create_message(message) do
-      IO.inspect(list_messages())
       {:noreply, assign(socket, :messages, list_messages())}
     end
   end
