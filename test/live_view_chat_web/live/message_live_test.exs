@@ -27,7 +27,5 @@ defmodule LiveViewChatWeb.MessageLiveTest do
 
       assert html != nil
     end
-
   end
-
 end

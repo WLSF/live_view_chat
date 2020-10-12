@@ -106,6 +106,7 @@ defmodule LiveViewChat.Chat do
   end
 
   defp broadcast({:error, _reason} = error, _event), do: error
+
   defp broadcast({:ok, message}, event) do
     Phoenix.PubSub.broadcast(LiveViewChat.PubSub, "messages", {event, message})
     {:ok, message}
