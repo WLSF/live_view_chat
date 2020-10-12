@@ -7,9 +7,6 @@ defmodule LiveViewChatWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-  end
-
-  pipeline :with_root_layout do
     plug :put_root_layout, {LiveViewChatWeb.LayoutView, :root}
   end
 
