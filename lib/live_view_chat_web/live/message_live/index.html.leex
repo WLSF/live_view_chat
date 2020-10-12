@@ -14,15 +14,6 @@
       <h1>Chat</h1>
     </header>
 
-    <%= if @live_action in [:new, :edit] do %>
-      <%= live_modal @socket, LiveViewChatWeb.MessageLive.FormComponent,
-        id: @message.id || :new,
-        title: @page_title,
-        action: @live_action,
-        message: @message,
-        return_to: Routes.message_index_path(@socket, :index) %>
-    <% end %>
-
     <div class="container py-5 px-4 border border-success">
       <!-- Chat Box-->
       <div class="px-4 py-5 chat-box bg-white">
@@ -41,7 +32,5 @@
         </div>
       </form>
     </div>
-
-    <span><%= live_patch "New Message", to: Routes.message_index_path(@socket, :new) %></span>
   </body>
 </html>
