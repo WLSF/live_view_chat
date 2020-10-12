@@ -13,7 +13,6 @@ defmodule LiveViewChat.Application do
 
   def children() do
     [
-      {LiveViewChat.State, []},
       LiveViewChat.Repo,
       LiveViewChatWeb.Telemetry,
       {Phoenix.PubSub, name: LiveViewChat.PubSub},
