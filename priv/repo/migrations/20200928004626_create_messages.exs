@@ -8,6 +8,5 @@ defmodule LiveViewChat.Repo.Migrations.CreateMessages do
 
       timestamps()
     end
-
   end
 end
